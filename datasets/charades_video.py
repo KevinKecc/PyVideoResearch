@@ -13,7 +13,7 @@ class CharadesVideo(Charades):
         if 'train_gap' not in kwargs:
             kwargs['train_gap'] = 64
         if 'test_gap' not in kwargs:
-            kwargs['test_gap'] = 50
+            kwargs['test_gap'] = 10
         super(CharadesVideo, self).__init__(*args, **kwargs)
 
     def _prepare(self, path, labels, split):

@@ -18,6 +18,11 @@ def ordered_load_state(model, chkpoint):
         print(e)
         print('keys do not match model, trying to align')
         model_keys = model.state_dict().keys()
+        new_model_key = []
+        for model_key in model_keys:
+            if "num_batches_tracked" not in model_key:
+                new_model_key.append(model_key)
+        model_keys = new_model_key
         fixed = OrderedDict([(z, y) for (_, y), z in zip(chkpoint.items(), model_keys)])
         model.load_state_dict(fixed)
 

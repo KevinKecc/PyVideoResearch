@@ -20,6 +20,8 @@ class VideoTask(Task):
         """ Run video-level validation on the test set """
         timer = Timer()
         ids, outputs = [], []
+        for i, meta in enumerate(loader.dataset.data['datas']):
+            ids.append(meta['id'])
         metrics = [m() for m in self.metrics]
 
         # switch to evaluate mode
